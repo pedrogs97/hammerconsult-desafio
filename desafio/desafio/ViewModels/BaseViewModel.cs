@@ -12,7 +12,8 @@ namespace desafio.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<Barbecue> ServiceBarbecue => DependencyService.Get<IDataStore<Barbecue>>();
+        public IDataStore<Person> ServicePerson => DependencyService.Get<IDataStore<Person>>();
 
         bool isBusy = false;
         public bool IsBusy

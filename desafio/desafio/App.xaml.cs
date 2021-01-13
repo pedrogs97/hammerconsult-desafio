@@ -13,8 +13,8 @@ namespace desafio
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            DependencyService.Register<BarbecueDataStore>();
+            MainPage = new NavigationPage(new InitialPage());
         }
 
         protected override void OnStart()

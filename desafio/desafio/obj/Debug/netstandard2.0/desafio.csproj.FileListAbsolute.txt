@@ -1,0 +1,16 @@
+D:\Desafio Hammer\desafio\desafio\desafio\bin\Debug\netstandard2.0\desafio.deps.json
+D:\Desafio Hammer\desafio\desafio\desafio\bin\Debug\netstandard2.0\desafio.dll
+D:\Desafio Hammer\desafio\desafio\desafio\bin\Debug\netstandard2.0\ref\desafio.dll
+D:\Desafio Hammer\desafio\desafio\desafio\bin\Debug\netstandard2.0\desafio.pdb
+D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\desafio.csprojAssemblyReference.cache
+D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\desafio.AssemblyInfoInputs.cache
+D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\desafio.AssemblyInfo.cs
+D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\desafio.csproj.CoreCompileInputs.cache
+D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\XamlC.stamp
+D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\desafio.dll
+D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\ref\desafio.dll
+D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\desafio.pdb
+D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\Views\InitialPage.xaml.g.cs
+D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\Views\EmptyBarbecuesView.xaml.g.cs
+D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\Views\AddBarbecuePage.xaml.g.cs

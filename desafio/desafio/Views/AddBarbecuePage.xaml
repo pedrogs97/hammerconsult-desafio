@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="desafio.Views.AddBarbecuePage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <RefreshView IsRefreshing="{Binding IsBusy}">
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <Label Text="Título" FontAttributes="Bold" FontSize="Medium"/>
+                <Entry Placeholder="Título" MaxLength="50" Text="{Binding TitleBarbecue, Mode=OneWayToSource}"/>
+                <Label Text="Descrição" FontAttributes="Bold" FontSize="Medium"/>
+                <Entry Placeholder="Informações extras sobre o churrasco." MaxLength="250" Text="{Binding Description, Mode=OneWayToSource}"/>
+                <Label Text="Endereço" FontAttributes="Bold" FontSize="Medium"/>
+                <Entry Placeholder="Informe onde será realizado." Text="{Binding Local, Mode=OneWayToSource}"/>
+                <Label Text="Data" FontAttributes="Bold" FontSize="Medium"/>
+                <DatePicker x:Name="datePicker" Format="dd/MM/yyyy" Date="{Binding BarbecueDate, Mode=OneWayToSource}"/>
+                <Button Text="Adicionar" HorizontalOptions="EndAndExpand" Command="{Binding AddBarbecue}"/>
+            </StackLayout>
+        </RefreshView>
+        
+    </ContentPage.Content>
+</ContentPage>
