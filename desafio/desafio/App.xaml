@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="desafio.App">
+             x:Class="desafio.App"
+             xmlns:Converter="clr-namespace:desafio.Converters">
     <!--
         Define global resources and styles here, that apply to all pages in your app.
     -->
@@ -27,6 +28,9 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
+            <Converter:PersonToString x:Key="creator"/>
+            <Converter:DateToString x:Key="date"/>
+            <Converter:BoolToImgSource x:Key="paid"/>
         </ResourceDictionary>        
     </Application.Resources>
 </Application>

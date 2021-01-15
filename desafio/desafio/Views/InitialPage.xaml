@@ -3,8 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="desafio.Views.InitialPage"
              Title="{Binding Title}">
-
     <ContentPage.Content>
-        <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}"/>
+        <CollectionView  ItemsSource="{Binding Barbecues}" x:Name="CVBarbecue">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.ToDetailCommand, Source={x:Reference CVBarbecue}}" CommandParameter="{Binding Id}"/>
+                        </Grid.GestureRecognizers>
+                        <Image Aspect="AspectFill" HeightRequest="60" WidthRequest="60" Source="barbecue_grill.png" Grid.Row="0" Grid.RowSpan="1" Grid.Column="0"/>
+                        <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center" Grid.Column="1" Grid.Row="0">
+                            <Label Text="{Binding Title}" FontSize="Medium"   HorizontalOptions="StartAndExpand"/>
+                            <Label Text="{Binding Date, Converter={StaticResource date}}"  HorizontalOptions="StartAndExpand"/>
+                            <Label Text="{Binding Creator, Converter={StaticResource creator}}"  HorizontalOptions="StartAndExpand" FontSize="Micro"/>
+                        </StackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <ContentView>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="15">
+                        <Label Text="Sem churrascos realizados ou para acontecer." HorizontalOptions="Center"/>
+                        <Button Text="Adicionar" Command="{Binding ToAddCommad}"/>
+                    </StackLayout>
+                </ContentView>
+            </CollectionView.EmptyView>
+        </CollectionView>
     </ContentPage.Content>
 </ContentPage>

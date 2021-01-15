@@ -1,0 +1,56 @@
+@string/appbar_scrolling_view_behavior;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\rootlayout.xml
+adaptive-icon;obj\Debug\100\res\mipmap-anydpi-v26\icon.xml
+adaptive-icon;obj\Debug\100\res\mipmap-anydpi-v26\icon_round.xml
+alpha;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\anim\enterfromleft.xml
+alpha;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\anim\exittoleft.xml
+androidx.appcompat.widget.Toolbar;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\fallbacktoolbardonotuse.xml
+androidx.appcompat.widget.Toolbar;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\rootlayout.xml
+androidx.appcompat.widget.Toolbar;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\shellcontent.xml
+androidx.appcompat.widget.Toolbar;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\toolbar.xml
+androidx.appcompat.widget.Toolbar;obj\Debug\100\res\layout\toolbar.xml
+androidx.coordinatorlayout.widget.CoordinatorLayout;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\rootlayout.xml
+androidx.coordinatorlayout.widget.CoordinatorLayout;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\shellcontent.xml
+attr;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\values\attrs.xml
+background;obj\Debug\100\res\mipmap-anydpi-v26\icon.xml
+background;obj\Debug\100\res\mipmap-anydpi-v26\icon_round.xml
+cache-path;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\43\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+color;obj\Debug\100\res\values\colors.xml
+com.google.android.material.appbar.AppBarLayout;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\flyoutcontent.xml
+com.google.android.material.appbar.AppBarLayout;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\rootlayout.xml
+com.google.android.material.appbar.AppBarLayout;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\shellcontent.xml
+com.google.android.material.bottomnavigation.BottomNavigationView;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\bottomtablayout.xml
+com.google.android.material.tabs.TabLayout;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\fallbacktabbardonotuse.xml
+com.google.android.material.tabs.TabLayout;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\rootlayout.xml
+com.google.android.material.tabs.TabLayout;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\tabbar.xml
+com.google.android.material.tabs.TabLayout;obj\Debug\100\res\layout\tabbar.xml
+crc643f46942d9dd1fff9.ShellFlyoutLayout;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\flyoutcontent.xml
+crc64720bb2db43a66fe9.FormsViewPager;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\rootlayout.xml
+declare-styleable;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\values\attrs.xml
+external-cache-path;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\43\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+external-path;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\43\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+foreground;obj\Debug\100\res\mipmap-anydpi-v26\icon.xml
+foreground;obj\Debug\100\res\mipmap-anydpi-v26\icon_round.xml
+FrameLayout;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\bottomtablayout.xml
+item;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\values\styles.xml
+LinearLayout;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\bottomtablayout.xml
+paths;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\43\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+resources;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\46\jl\res\values\strings.xml
+resources;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\values\attrs.xml
+resources;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\values\strings.xml
+resources;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\values\styles.xml
+resources;obj\Debug\100\res\values\colors.xml
+resources;obj\Debug\100\res\values\styles.xml
+set;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\anim\enterfromleft.xml
+set;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\anim\enterfromright.xml
+set;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\anim\exittoleft.xml
+set;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\anim\exittoright.xml
+string;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\46\jl\res\values\strings.xml
+string;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\values\strings.xml
+style;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\values\styles.xml
+style;obj\Debug\100\res\values\styles.xml
+translate;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\anim\enterfromleft.xml
+translate;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\anim\enterfromright.xml
+translate;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\anim\exittoleft.xml
+translate;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\anim\exittoright.xml
+xamarin.forms.platform.android.appcompat.FormsViewPager;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\rootlayout.xml
+xamarin.forms.platform.android.ShellFlyoutLayout;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\flyoutcontent.xml

@@ -11,6 +11,8 @@ namespace desafio.Models
         public DateTime Date { get; set; }
         public string Local { get; set; }
         public List<Person> Participants { get; set; }
+        public List<Person> ParticipantsPaid { get; set; }
+        public Person Creator { get; set; }
         public float TotalCollected { get; set; }
         public float TotalSpent { get; set; }
         public  float TotalDrink { get; set; }

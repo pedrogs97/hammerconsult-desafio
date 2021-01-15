@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="desafio.Views.BarbecueDetail"
+             BackgroundColor="Transparent"
+             Title="{Binding Barbecue.Title, Mode=OneWay}">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Padding="5" x:Name="SLDetail" BackgroundColor="LightGray">
+            <Label Text="Sobre"/>
+            <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
+            <Label Text="{Binding Barbecue.Description, Mode=OneWay}" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Barbecue.Local, Mode=OneWay}" HorizontalOptions="CenterAndExpand"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="{Binding Barbecue.Creator, Mode=OneWay, Converter={StaticResource creator}}" FontSize="Micro" HorizontalOptions="Start"/>
+                <Label Text="{Binding Barbecue.Date, Mode=OneWay, Converter={StaticResource date}}" FontSize="Small" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <Label Text="Participantes"/>
+            <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
+            <CollectionView ItemsSource="{Binding Participants}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame CornerRadius="100"  HeightRequest="25" WidthRequest="25" HorizontalOptions="Center" VerticalOptions="Center" Padding="0" IsClippedToBounds="True">
+                                <Image Source="user_icon.jpg" HeightRequest="25" WidthRequest="25" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+                            <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="0">
+                                <Label Text="{Binding Name}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <ImageButton Source="{Binding Paid, Converter={StaticResource paid}}" HorizontalOptions="End" VerticalOptions="CenterAndExpand" HeightRequest="30" WidthRequest="30" Command="{Binding Path=BindingContext.PaidCommand, Source={x:Reference SLDetail}}" CommandParameter="{Binding Id}" BackgroundColor="Transparent" IsEnabled="False"/>
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <ImageButton Source="ic_group_add.png" HorizontalOptions="End" Command="{Binding ShareCommand}" BackgroundColor="Transparent"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

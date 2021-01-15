@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "zH7ohjaHgZdm55KDgWB5/JjTmShMWveZsxj7LkRYkxqAvqxWS2m0vgrVjtIOOuBz5x75Yxr1V5sYTpg7gLSyvg==",
+  "dgSpecHash": "V/cHTk1HjuO4dM8E/S2PTA7v/ORAtojTHHyNKhNs16QwUbGz9FWbG8fpJiQKzoRIZVd6SP7kFkgfL8fOJTqTXw==",
   "success": true,
   "projectFilePath": "D:\\Desafio Hammer\\desafio\\desafio\\desafio\\desafio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
-    "C:\\Users\\Dell\\.nuget\\packages\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
-    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.6.0.1141\\xamarin.forms.4.6.0.1141.nupkg.sha512"
+    "C:\\Users\\Dell\\.nuget\\packages\\xamarin.essentials\\1.6.0\\xamarin.essentials.1.6.0.nupkg.sha512",
+    "C:\\Users\\Dell\\.nuget\\packages\\xamarin.forms\\5.0.0.1874\\xamarin.forms.5.0.0.1874.nupkg.sha512"
   ],
   "logs": []
 }

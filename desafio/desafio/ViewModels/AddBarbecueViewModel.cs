@@ -48,17 +48,23 @@ namespace desafio.ViewModels
                         Date = BarbecueDate,
                         Description = Description,
                         Local = Local,
-                        Participants = ServicePerson.GetItems().ToList()
+                        Participants = ServicePerson.GetItems().ToList(),
+                        ParticipantsPaid = new List<Person>(),
+                        TotalCollected = 0.00f,
+                        TotalDrink = 0.00f,
+                        TotalFood = 0.00f,
+                        TotalSpent = 0.00f,
+                        Creator = ServicePerson.GetItem(App.Current.Properties["user"].ToString())
                     };
                     if (ServiceBarbecue.AddItem(Barbecue))
                     {
                         await Page.DisplayAlert("", "Churrasco criado com sucesso!", "OK");
-                        await Page.Navigation.PopModalAsync(true);
+                        await Page.Navigation.PopAsync(true);
                     }
                     else
                     {
                         await Page.DisplayAlert("OPS", "Não foi possível criar o churrasco.", "OK");
-                        await Page.Navigation.PopModalAsync(true);
+                        await Page.Navigation.PopAsync(true);
                     }
                 }
                 else

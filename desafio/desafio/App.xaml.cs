@@ -8,12 +8,13 @@ namespace desafio
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();
 
             DependencyService.Register<BarbecueDataStore>();
+            DependencyService.Register<PersonDataStore>();
+            App.Current.Properties.Clear();
             MainPage = new NavigationPage(new InitialPage());
         }
 

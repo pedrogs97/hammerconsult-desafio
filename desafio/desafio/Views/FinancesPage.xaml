@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="desafio.Views.FinancesPage">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <BoxView Grid.Row="0" Grid.Column="0" BackgroundColor="Gray" Opacity="0.8">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseModal}"/>
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            <Frame Margin="25, 50" CornerRadius="10" BackgroundColor="LightGray" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0" >
+                <StackLayout>
+                    <Label Text="Finança"/>
+                    <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Total Arrecadado" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0"/>
+                        <Label Text="Total Estimado" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="1"/>
+                        <Label Text="Gasto com bebidas" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="2"/>
+                        <Label Text="Gasto com comida" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="3"/>
+                        <Label Text="Gastos no total" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="4"/>
+                        <Label Text="{Binding Barbecue.TotalCollected}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="0"/>
+                        <Label Text="{Binding Estimated}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1"/>
+                        <Label Text="{Binding Barbecue.TotalDrink}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="2"/>
+                        <Label Text="{Binding Barbecue.TotalFood}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="3"/>
+                        <Label Text="{Binding Barbecue.TotalSpent}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="4"/>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

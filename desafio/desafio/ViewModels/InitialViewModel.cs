@@ -1,6 +1,8 @@
-﻿using desafio.Views;
+﻿using desafio.Models;
+using desafio.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,19 +12,45 @@ namespace desafio.ViewModels
 {
     public class InitialViewModel : BaseViewModel
     {
-        public InitialViewModel()
+        private ObservableCollection<Barbecue> _barbecues;
+        public ObservableCollection<Barbecue> Barbecues
+        {
+            get => _barbecues;
+            set => SetProperty(ref _barbecues, value);
+        }
+        private INavigation Navigation { get; }
+        public Command ToAddCommad { get; }
+        public Command ToDetailCommand { get; }
+        public InitialViewModel(INavigation navigation)
         {
             Title = "Home";
+            Navigation = navigation;
+            ToAddCommad = new Command(async () => {
+                await Navigation.PushAsync(new AddBarbecuePage());
+            });
+            ToDetailCommand = new Command<string>(async (idBarbecue) => {
+                await Navigation.PushAsync(new BarbecueDetail(idBarbecue),true);
+            });
+            Barbecues = new ObservableCollection<Barbecue>();
         }
-        public View OnAppearing()
+        public async void OnAppearing()
         {
-            IsBusy = true;
-            var allBarbecue = ServiceBarbecue.GetItems().ToList();
-            if (allBarbecue.Count == 0)
+            Barbecues = LoadBarbecue();
+            if (!App.Current.Properties.ContainsKey("user"))
             {
-                return new EmptyBarbecuesView();
+                var currentUser = new Person { Id = Guid.NewGuid().ToString(), Name = "Pedro Gustavo" };
+                if (ServicePerson.AddItem(currentUser))
+                {
+                    App.Current.Properties.Add("user", currentUser.Id);
+                    await App.Current.SavePropertiesAsync();
+                }
+                else
+                    throw new NotImplementedException();
             }
-            return new EmptyBarbecuesView();
+        }
+        private ObservableCollection<Barbecue> LoadBarbecue()
+        {
+            return new ObservableCollection<Barbecue>(ServiceBarbecue.GetItems());
         }
     }
 }

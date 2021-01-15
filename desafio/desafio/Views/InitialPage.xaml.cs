@@ -17,13 +17,13 @@ namespace desafio.Views
         public InitialPage()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new InitialViewModel();
+            BindingContext = _viewModel = new InitialViewModel(Navigation);
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Content = _viewModel.OnAppearing();
+            _viewModel.OnAppearing();
         }
     }
 }
