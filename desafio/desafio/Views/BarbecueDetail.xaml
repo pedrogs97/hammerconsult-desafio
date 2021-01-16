@@ -4,9 +4,12 @@
              x:Class="desafio.Views.BarbecueDetail"
              BackgroundColor="Transparent"
              Title="{Binding Barbecue.Title, Mode=OneWay}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ShareCommand}" IconImageSource="ic_group_add.png"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Padding="5" x:Name="SLDetail" BackgroundColor="LightGray">
-            <Label Text="Sobre"/>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Fill" Padding="5" x:Name="SLDetail" BackgroundColor="LightGray">
+            <Label Text="Sobre" FontAttributes="Bold"/>
             <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
             <Label Text="{Binding Barbecue.Description, Mode=OneWay}" HorizontalOptions="CenterAndExpand"/>
             <Label Text="{Binding Barbecue.Local, Mode=OneWay}" HorizontalOptions="CenterAndExpand"/>
@@ -14,9 +17,9 @@
                 <Label Text="{Binding Barbecue.Creator, Mode=OneWay, Converter={StaticResource creator}}" FontSize="Micro" HorizontalOptions="Start"/>
                 <Label Text="{Binding Barbecue.Date, Mode=OneWay, Converter={StaticResource date}}" FontSize="Small" HorizontalOptions="EndAndExpand"/>
             </StackLayout>
-            <Label Text="Participantes"/>
+            <Label Text="Participantes" FontAttributes="Bold"/>
             <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
-            <CollectionView ItemsSource="{Binding Participants}">
+            <CollectionView ItemsSource="{Binding Participants}" HeightRequest="300">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="5">
@@ -32,13 +35,44 @@
                             </Frame>
                             <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="0">
                                 <Label Text="{Binding Name}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                                <ImageButton Source="{Binding Paid, Converter={StaticResource paid}}" HorizontalOptions="End" VerticalOptions="CenterAndExpand" HeightRequest="30" WidthRequest="30" Command="{Binding Path=BindingContext.PaidCommand, Source={x:Reference SLDetail}}" CommandParameter="{Binding Id}" BackgroundColor="Transparent" IsEnabled="False"/>
+                                <ImageButton Source="{Binding Paid, Converter={StaticResource paid}}" HorizontalOptions="End" VerticalOptions="CenterAndExpand" HeightRequest="30" WidthRequest="30" Command="{Binding Path=BindingContext.PaidCommand, Source={x:Reference SLDetail}}" CommandParameter="{Binding Id}"  BackgroundColor="Transparent"/>
                             </StackLayout>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <ImageButton Source="ic_group_add.png" HorizontalOptions="End" Command="{Binding ShareCommand}" BackgroundColor="Transparent"/>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Finança" FontAttributes="Bold"/>
+                    <Label HorizontalOptions="End" VerticalOptions="Center" HorizontalTextAlignment="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="+ Detalhes" FontSize="Micro" TextColor="Blue" TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenModalCommand}" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Total Arrecadado" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0"/>
+                    <Label Text="Total Estimado" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="{Binding Collected}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="0"/>
+                    <Label Text="{Binding Estimated}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1"/>
+                </Grid>
+                
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

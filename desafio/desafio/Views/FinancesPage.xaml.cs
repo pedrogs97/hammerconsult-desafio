@@ -1,4 +1,5 @@
-﻿using System;
+﻿using desafio.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,19 @@ namespace desafio.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FinancesPage : ContentPage
     {
-        public FinancesPage()
+        private readonly string ID;
+        private readonly FinancesViewModel _viewModel;
+        public FinancesPage(string id)
         {
             InitializeComponent();
+            ID = id;
+            BindingContext = _viewModel = new FinancesViewModel(this);
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.OnAppearing(ID);
         }
     }
 }

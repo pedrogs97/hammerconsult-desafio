@@ -1,4 +1,5 @@
 ﻿using desafio.Models;
+using desafio.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,18 +18,15 @@ namespace desafio.ViewModels
             public bool Paid { get; set; }
         }
         private ObservableCollection<ParticipantsModel> _participants;
+        private string _collected;
         private string _estimated;
         private Barbecue _barbecue;
-        private bool _enable;
+        private bool enablePayment;
         private readonly Page Page;
        
         public Command PaidCommand { get; }
         public Command ShareCommand { get; set; }
-        public bool EnableButton
-        {
-            get => _enable;
-            set => SetProperty(ref _enable, value);
-        }
+        public Command OpenModalCommand { get; set; }
         public ObservableCollection<ParticipantsModel> Participants
         {
             get => _participants;
@@ -39,6 +37,11 @@ namespace desafio.ViewModels
             get => _estimated;
             set => SetProperty(ref _estimated, value);
         }
+        public string Collected
+        {
+            get => _collected;
+            set => SetProperty(ref _collected, value);
+        }
         public Barbecue Barbecue
         {
             get => _barbecue;
@@ -47,35 +50,50 @@ namespace desafio.ViewModels
         public BarbecueDetailViewModel(Page page)
         {
             Page = page;
+            Collected = "0";
             Participants = new ObservableCollection<ParticipantsModel>();
             PaidCommand = new Command<string>(Paid);
             ShareCommand = new Command(ShareLink);
+            OpenModalCommand = new Command(OpenModal);
+        }
+
+        private async void OpenModal()
+        {
+            await Page.Navigation.PushModalAsync(new FinancesPage(Barbecue.Id));
         }
 
         private async void Paid(string id)
         {
-            var person = ServicePerson.GetItem(id);
-            bool confirmed;
-            if (Barbecue.ParticipantsPaid.Contains(person))
+            if (enablePayment)
             {
-                confirmed = await Page.DisplayAlert("Atenção", $"Confirmar que {person.Name} não pagou o valor inteiro?", "Sim", "Não");
+                var person = ServicePerson.GetItem(id);
+                bool confirmed;
+                if (Barbecue.ParticipantsPaid.Contains(person))
+                {
+                    confirmed = await Page.DisplayAlert("Atenção", $"Confirmar que {person.Name} não pagou o valor inteiro?", "Sim", "Não");
+                    if (confirmed)
+                    {
+                        Barbecue.TotalCollected -= 20.00f;
+                        Barbecue.ParticipantsPaid.Remove(person);
+                        UpdateParticipants(person.Id, false);
+                    }
+                }
+                else
+                {
+                    confirmed = await Page.DisplayAlert("Atenção", $"Confirmar que {person.Name} pagou o valor inteiro?", "Sim", "Não");
+                    if (confirmed)
+                    {
+                        Barbecue.TotalCollected += 20.00f;
+                        Barbecue.ParticipantsPaid.Add(person);
+                        UpdateParticipants(person.Id, true);
+                    }
+                }
                 if (confirmed)
                 {
-                    Barbecue.ParticipantsPaid.Remove(person);
-                    UpdateParticipants(person.Id, false);
+                    ServiceBarbecue.UpdateItem(Barbecue);
+                    Collected = Barbecue.TotalCollected.ToString();
                 }
             }
-            else
-            {
-                confirmed = await Page.DisplayAlert("Atenção", $"Confirmar que {person.Name} pagou o valor inteiro?", "Sim", "Não");
-                if (confirmed)
-                {
-                    Barbecue.ParticipantsPaid.Add(person);
-                    UpdateParticipants(person.Id, true);
-                }
-            }
-            if (confirmed)
-                ServiceBarbecue.UpdateItem(Barbecue);
         }
 
         private async void ShareLink()
@@ -102,32 +120,36 @@ namespace desafio.ViewModels
             }
             Participants.Remove(p);
             p.Paid = paid;
-            Participants.Insert(0,p);
+            if (paid)
+                Participants.Insert(0, p);
+            else
+                Participants.Insert(Participants.Count, p);
         }
 
         public void OnAppearing(string id)
         {
-            EnableButton = false;
             Barbecue = ServiceBarbecue.GetItem(id);
+            if (ServicePerson.GetItem(App.Current.Properties["user"].ToString()).Id == Barbecue.Creator.Id)
+                enablePayment = true;
+            else
+                enablePayment = false;
             var estimated = 0.00;
-            if (Barbecue.Participants.Count != Participants.Count)
-                Barbecue.Participants.ForEach((person) =>
+            Barbecue.Participants.ForEach((person) =>
+            {
+                var participant = new ParticipantsModel
                 {
-                    var participant = new ParticipantsModel
-                    {
-                        Id = person.Id,
-                        Name = person.Name,
-                    };
-                    if (!Barbecue.ParticipantsPaid.Contains(person))
-                        participant.Paid = false;
-                    else
-                        participant.Paid = true;
+                    Id = person.Id,
+                    Name = person.Name,
+                };
+                if (!Barbecue.ParticipantsPaid.Contains(person))
+                    participant.Paid = false;
+                else
+                    participant.Paid = true;
+                if (Barbecue.Participants.Count != Participants.Count)
                     Participants.Add(participant);
-                    estimated += 20.00;
-                });
+                estimated += 20.00;
+            });
             Estimated = estimated.ToString();
-        }
-
-        
+        }        
     }
 }

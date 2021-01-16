@@ -23,8 +23,6 @@ com.google.android.material.tabs.TabLayout;D:\Desafio Hammer\desafio\desafio\des
 com.google.android.material.tabs.TabLayout;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\rootlayout.xml
 com.google.android.material.tabs.TabLayout;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\tabbar.xml
 com.google.android.material.tabs.TabLayout;obj\Debug\100\res\layout\tabbar.xml
-crc643f46942d9dd1fff9.ShellFlyoutLayout;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\flyoutcontent.xml
-crc64720bb2db43a66fe9.FormsViewPager;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\layout\rootlayout.xml
 declare-styleable;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\47\jl\res\values\attrs.xml
 external-cache-path;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\43\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 external-path;D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\lp\43\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
