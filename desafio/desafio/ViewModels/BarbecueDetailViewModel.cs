@@ -1,9 +1,6 @@
 ﻿using desafio.Models;
 using desafio.Views;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 

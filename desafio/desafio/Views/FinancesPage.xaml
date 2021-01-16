@@ -12,10 +12,10 @@
             </BoxView>
             <Frame Margin="25, 50" CornerRadius="10" BackgroundColor="LightGray" HeightRequest="250" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0" >
                 <StackLayout>
-                    <StackLayout>
-                        <Label Text="Gastos"/>
-                        <ImageButton />
-                    </StackLayout>
+                    <Grid HorizontalOptions="Fill">
+                        <Label Text="Gastos" FontAttributes="Bold"  VerticalOptions="End"/>
+                        <ImageButton Source="ic_add_shopping_cart.png" VerticalOptions="Start" HorizontalOptions="End" HeightRequest="37" BackgroundColor="Transparent" IsVisible="{Binding IsVisible}" Command="{Binding BuyCommand}"/>
+                    </Grid>
                     <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
                     <Grid>
                         <Grid.RowDefinitions>

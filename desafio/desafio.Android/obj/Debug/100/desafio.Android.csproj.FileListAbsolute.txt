@@ -648,3 +648,4 @@ D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\androidx\proguar
 D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\androidx\proguard\b8b883d6-ca8e-4026-82d6-e9a681d1c5e2.txt
 D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\androidx\proguard\b99665a7-fcc0-4695-80d3-aa60ed49fe3b.txt
 D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\androidx\proguard\d4fcc513-ab81-437d-b071-05ea2ad10e1b.txt
+D:\Desafio Hammer\desafio\desafio\desafio.Android\obj\Debug\100\res\drawable\ic_add_shopping_cart.png
