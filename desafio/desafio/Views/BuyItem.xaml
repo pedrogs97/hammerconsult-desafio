@@ -2,12 +2,103 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="desafio.Views.BuyItem">
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="RadioButtonTemplate">
+            <Frame BorderColor="#F3F2F1"
+                   BackgroundColor="#F3F2F1"
+                   HasShadow="False"
+                   HeightRequest="100"
+                   WidthRequest="100"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start"
+                   Padding="0">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CheckedStates">
+                            <VisualState x:Name="Checked">
+                                <VisualState.Setters>
+                                    <Setter Property="BorderColor"
+                                            Value="#8db600" />
+                                    <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="1" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Unchecked">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor"
+                                            Value="#F3F2F1" />
+                                    <Setter Property="BorderColor"
+                                            Value="#F3F2F1" />
+                                    <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="0" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+                <Grid Margin="4"
+                      WidthRequest="100">
+                    <Grid WidthRequest="18"
+                          HeightRequest="18"
+                          HorizontalOptions="End"
+                          VerticalOptions="Start">
+                        <Ellipse Stroke="Black"
+                                 Fill="White"
+                                 WidthRequest="16"
+                                 HeightRequest="16"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+                        <Ellipse x:Name="check"
+                                 Fill="#8db600"
+                                 WidthRequest="8"
+                                 HeightRequest="8"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+                    </Grid>
+                    <ContentPresenter />
+                </Grid>
+            </Frame>
+        </ControlTemplate>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="ControlTemplate"
+                    Value="{StaticResource RadioButtonTemplate}" />
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Margin="5">
-            <Label Text="Bebidas" FontAttributes="Bold" />
+            <Label Text="Compras" FontAttributes="Bold" />
             <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
-            <RadioButton/>
-            <RadioButton/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+                <RadioButton>
+                    <RadioButton.Content>
+                        <StackLayout>
+                            <Image Source="drink.png" HorizontalOptions="Center" VerticalOptions="EndAndExpand" />
+                            <Label Text="Bebida" HorizontalOptions="Center" VerticalOptions="End" />
+                        </StackLayout>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton>
+                    <RadioButton.Content>
+                        <StackLayout>
+                            <Image Source="food.png" HorizontalOptions="Center" VerticalOptions="EndAndExpand" />
+                            <Label Text="Comida" HorizontalOptions="Center" VerticalOptions="End" />
+                        </StackLayout>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton>
+                    <RadioButton.Content>
+                        <StackLayout VerticalOptions="Center">
+                            <Label Text="Outros" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </StackLayout>
+                    </RadioButton.Content>
+                </RadioButton>
+            </StackLayout>
+            <Entry Placeholder="Nome. ex.: cerveja, picanha" HorizontalOptions="Start" WidthRequest="250" ClearButtonVisibility="WhileEditing" Keyboard="Text"/>
+            <Entry Placeholder="Valor" ClearButtonVisibility="WhileEditing" WidthRequest="100" HorizontalOptions="Start" Keyboard="Numeric"/>
+            <Button Text="Adicionar" HorizontalOptions="End"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
