@@ -6,10 +6,10 @@ namespace desafio.Services
 {
     public interface IDataStore<T>
     {
-        Task<bool> AddItemAsync(T item);
-        Task<bool> UpdateItemAsync(T item);
-        Task<bool> DeleteItemAsync(string id);
-        Task<T> GetItemAsync(string id);
-        Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
+        bool AddItem(T item);
+        bool UpdateItem(T item);
+        bool DeleteItem(string id);
+        T GetItem(string id);
+        IEnumerable<T> GetItems();
     }
 }

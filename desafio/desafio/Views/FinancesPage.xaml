@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="desafio.Views.FinancesPage"
+             BackgroundColor="Transparent">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <BoxView Grid.Row="0" Grid.Column="0" BackgroundColor="Gray" Opacity="0.8">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseModalCommand}"/>
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            <Frame Margin="25, 50" CornerRadius="10" BackgroundColor="LightGray" HeightRequest="250" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0" >
+                <StackLayout>
+                    <Grid HorizontalOptions="Fill">
+                        <Label Text="Gastos" FontAttributes="Bold"  VerticalOptions="End"/>
+                        <ImageButton Source="ic_add_shopping_cart.png" VerticalOptions="Start" HorizontalOptions="End" HeightRequest="37" BackgroundColor="Transparent" IsVisible="{Binding IsVisible}" Command="{Binding BuyCommand}"/>
+                    </Grid>
+                    <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
+                    <CollectionView ItemsSource="{Binding Items}" HeightRequest="150" x:Name="CVItems">
+                        <CollectionView.Header>
+                            <Grid>
+                                <Label Text="Item comprado" HorizontalOptions="Start" Grid.Column="0"/>
+                                <Label Text="Valor(R$)" HorizontalOptions="End" Grid.Column="1"/>
+                                <BoxView IsVisible="False" Grid.Column="2"/>
+                            </Grid>
+                        </CollectionView.Header>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="0"/>
+                                    <Label Text="{Binding Value, StringFormat='{0:F2}'}" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="1"/>
+                                    <ImageButton Grid.Column="2" Source="ic_remove_shopping_cart.png" VerticalOptions="Start" BackgroundColor="Transparent" HorizontalOptions="End" Command="{Binding Path=BindingContext.RemoveBuyCommand, Source={x:Reference CVItems}}" CommandParameter="{Binding .}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
+                    <Grid ColumnSpacing="3">
+                        <Label Text="Bebida(R$)" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0"/>
+                        <Label Text="Comida(R$)" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="1"/>
+                        <Label Text="Outros(R$)" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="2"/>
+                        <Label Text="Total(R$)" FontSize="Small" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="3"/>
+                        <Label Text="{Binding TotalDrink, StringFormat='{0:F2}'}" FontSize="Small" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                        <Label Text="{Binding TotalFood, StringFormat='{0:F2}'}" FontSize="Small" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+                        <Label Text="{Binding TotalOthers, StringFormat='{0:F2}'}" FontSize="Small" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="2"/>
+                        <Label Text="{Binding Total, StringFormat='{0:F2}'}" FontSize="Small" HorizontalOptions="End" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="3"/>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

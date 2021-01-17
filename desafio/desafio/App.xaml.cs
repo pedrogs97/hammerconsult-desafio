@@ -8,13 +8,14 @@ namespace desafio
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            DependencyService.Register<BarbecueDataStore>();
+            DependencyService.Register<PersonDataStore>();
+            App.Current.Properties.Clear();
+            MainPage = new NavigationPage(new InitialPage());
         }
 
         protected override void OnStart()

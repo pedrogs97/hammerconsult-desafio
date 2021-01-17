@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="desafio.Views.BarbecueDetail"
+             BackgroundColor="Transparent"
+             Title="{Binding Barbecue.Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ShareCommand}" IconImageSource="ic_group_add.png"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill" Padding="5" x:Name="SLDetail" BackgroundColor="LightGray">
+            <Label Text="Sobre" FontAttributes="Bold"/>
+            <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
+            <Label Text="{Binding Barbecue.Description}" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Barbecue.Local}" HorizontalOptions="CenterAndExpand"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="{Binding Barbecue.Creator.Name}" FontSize="Micro" HorizontalOptions="Start"/>
+                <Label Text="{Binding Barbecue.Date, Converter={StaticResource date}}" FontSize="Small" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <Label Text="Participantes" FontAttributes="Bold"/>
+            <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
+            <CollectionView ItemsSource="{Binding Participants}" HeightRequest="300" x:Name="CVParticipants">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.TapCommand,Source={x:Reference CVParticipants}}" CommandParameter="{Binding .}"/>
+                            </Grid.GestureRecognizers>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame CornerRadius="100"  HeightRequest="25" WidthRequest="25" HorizontalOptions="Center" VerticalOptions="Center" Padding="0" IsClippedToBounds="True">
+                                <Image Source="ic_user.png" HeightRequest="25" WidthRequest="25" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+                            <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="0">
+                                <Label Text="{Binding Name}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <ImageButton Source="{Binding Paid, Converter={StaticResource paid}}" HorizontalOptions="End" VerticalOptions="CenterAndExpand" HeightRequest="30" WidthRequest="30" Command="{Binding Path=BindingContext.PaidCommand, Source={x:Reference SLDetail}}" CommandParameter="{Binding Id}"  BackgroundColor="Transparent"/>
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Grid VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Orientation="Horizontal" Grid.Row="0" >
+                    <Label Text="Finança" FontAttributes="Bold" VerticalOptions="End"/>
+                    <Label HorizontalOptions="End" VerticalOptions="End" HorizontalTextAlignment="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="+ Detalhes" FontSize="Micro" TextColor="Blue" TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenModalCommand}" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <Line BackgroundColor="DarkGray"  HeightRequest="1" Grid.Row="1" VerticalOptions="Start"/>
+                <Grid Grid.Row="2" VerticalOptions="Start">
+                    <Label Text="Total Arrecadado" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0"/>
+                    <Label Text="Total Estimado" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="Total" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="2"/>
+                    <Label Text="{Binding Collected, StringFormat='{0:F2}'}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="0"/>
+                    <Label Text="{Binding Estimated, StringFormat='{0:F2}'}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1"/>
+                    <Label Text="{Binding Total, StringFormat='{0:F2}'}" FontSize="Small" TextColor="{Binding Total, Converter={StaticResource textColor}}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="2"/>
+                </Grid>
+                <Button Text="{Binding TextButton}" BackgroundColor="DarkRed" HorizontalOptions="Center" Command="{Binding LeaveCommand}" VerticalOptions="End" Grid.Row="3"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
