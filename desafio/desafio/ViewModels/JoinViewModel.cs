@@ -31,6 +31,11 @@ namespace desafio.ViewModels
         {
             var user = ServicePerson.GetItem(App.Current.Properties["user"].ToString());
             var barbecue = ServiceBarbecue.GetItem(CodeBarbecue);
+            if (barbecue.Participants.Contains(user))
+            {
+                await Page.DisplayAlert("", "Você já está participando desse churrasco!", "OK");
+                return;
+            }
             barbecue.Participants.Add(user);
             ServiceBarbecue.UpdateItem(barbecue);
             await Page.Navigation.PopModalAsync();

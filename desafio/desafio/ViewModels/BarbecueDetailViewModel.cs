@@ -16,7 +16,7 @@ namespace desafio.ViewModels
             public bool Paid { get; set; }
         }
         private ObservableCollection<ParticipantsModel> _participants;
-        private Color _textColor;
+        private string _textButton;
         private float _total;
         private float _collected;
         private float _estimated;
@@ -24,6 +24,7 @@ namespace desafio.ViewModels
         private bool creator;
         private readonly Page Page;
        
+        public Command LeaveCommand { get; }
         public Command PaidCommand { get; }
         public Command TapCommand { get; }
         public Command ShareCommand { get; }
@@ -33,10 +34,10 @@ namespace desafio.ViewModels
             get => _participants;
             set => SetProperty(ref _participants, value);
         }
-        public Color TextColor
+        public string TextButton
         {
-            get => _textColor;
-            set => SetProperty(ref _textColor, value);
+            get => _textButton;
+            set => SetProperty(ref _textButton, value);
         }
         public float Total
         {
@@ -65,7 +66,33 @@ namespace desafio.ViewModels
             TapCommand = new Command<ParticipantsModel>(Tap);
             PaidCommand = new Command<string>(Paid);
             ShareCommand = new Command(ShareLink);
+            LeaveCommand = new Command(Leave);
             OpenModalCommand = new Command(OpenModal);
+        }
+
+        private async void Leave()
+        {
+            if (creator)
+            {
+                ServiceBarbecue.DeleteItem(Barbecue.Id);
+                await Page.Navigation.PopAsync();
+            }
+            else
+            {
+                var user = ServicePerson.GetItem(App.Current.Properties["user"].ToString());
+                Barbecue.Participants.Remove(user);
+                var p = new ParticipantsModel();
+                foreach (var participant in Participants)
+                {
+                    if (participant.Id == user.Id)
+                    {
+                        p = participant;
+                        break;
+                    }
+                }
+                Participants.Remove(p);
+                await Page.Navigation.PopAsync();
+            }
         }
 
         private async void OpenModal()
@@ -189,9 +216,15 @@ namespace desafio.ViewModels
             Barbecue = ServiceBarbecue.GetItem(id);
 
             if (ServicePerson.GetItem(App.Current.Properties["user"].ToString()).Id == Barbecue.Creator.Id)
+            {
                 creator = true;
+                TextButton = "Desfazer churrasco";
+            }
             else
+            {
                 creator = false;
+                TextButton = "Deixar churrasco";
+            }
 
             UpdateValues();
         }        
