@@ -17,9 +17,9 @@ namespace desafio.ViewModels
         private readonly Page Page;
         private bool _isVisible;
 
-        public Command CloseModalCommand { get; set; }
-        public Command BuyCommand { get; set; }
-        public Command RemoveBuyCommand { get; set; }
+        public Command CloseModalCommand { get; }
+        public Command BuyCommand { get; }
+        public Command RemoveBuyCommand { get; }
         public ObservableCollection<Item> Items
         {
             get => _items;

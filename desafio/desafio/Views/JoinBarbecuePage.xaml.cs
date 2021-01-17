@@ -1,4 +1,5 @@
-﻿using System;
+﻿using desafio.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace desafio.Views
         public JoinBarbecuePage()
         {
             InitializeComponent();
+            BindingContext = new JoinViewModel(this);
         }
     }
 }

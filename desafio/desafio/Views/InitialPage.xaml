@@ -46,17 +46,21 @@
         <Selector:BarbecueDataTemplateSelector x:Key="BarbecueSelector" Expired="{StaticResource Expired}" NotExpired="{StaticResource NotExpired}"/>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <CollectionView  ItemsSource="{Binding Barbecues}" x:Name="CVBarbecue" ItemTemplate="{StaticResource BarbecueSelector}">
-            <CollectionView.EmptyView>
-                <ContentView>
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="15">
-                        <Label Text="Sem churrascos realizados ou para acontecer." HorizontalOptions="Center"/>
-                        <Button Text="Adicionar" Command="{Binding ToAddCommad}"/>
-                        <Label Text="ou" HorizontalOptions="Center"/>
-                        <Button Text="Participar" Command="{Binding ToJoinCommad}"/>
-                    </StackLayout>
-                </ContentView>
-            </CollectionView.EmptyView>
-        </CollectionView>
+        <Grid>
+            <CollectionView  ItemsSource="{Binding Barbecues}" x:Name="CVBarbecue" ItemTemplate="{StaticResource BarbecueSelector}" Grid.Row="0">
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout VerticalOptions="End" HorizontalOptions="Center" Margin="15">
+                            <Label Text="Sem churrascos realizados ou para acontecer." HorizontalOptions="Center"/>
+                            <Button Text="Adicionar" Command="{Binding ToAddCommand}"/>
+                            <Label Text="ou" HorizontalOptions="Center"/>
+                            <Button Text="Participar" Command="{Binding ToJoinCommand}"/>
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>
+            <Button Text="Participar" IsVisible="{Binding IsVisible}" Command="{Binding ToJoinCommand}" Grid.Row="1" VerticalOptions="End"/>
+        </Grid>
+        
     </ContentPage.Content>
 </ContentPage>

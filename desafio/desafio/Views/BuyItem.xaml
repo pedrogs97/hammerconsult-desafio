@@ -104,7 +104,7 @@
                             </RadioButton.Content>
                         </RadioButton>
                     </StackLayout>
-                    <Entry Text="{Binding Item.Name}" Placeholder="Nome. ex.: cerveja, picanha" HorizontalOptions="Start" WidthRequest="250" ClearButtonVisibility="WhileEditing" Keyboard="Text"/>
+                    <Entry Text="{Binding Item.Name}" Placeholder="Nome. ex.: cerveja, picanha" HorizontalOptions="Start" WidthRequest="250" ClearButtonVisibility="WhileEditing"/>
                     <Entry Text="{Binding Item.Value}" Placeholder="Valor" ClearButtonVisibility="WhileEditing" WidthRequest="100" HorizontalOptions="Start" Keyboard="Numeric"/>
                     <Button Text="Adicionar" HorizontalOptions="End" Command="{Binding AddCommand}"/>
                 </StackLayout>
