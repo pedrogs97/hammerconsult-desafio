@@ -15,8 +15,8 @@ namespace desafio.ViewModels
         private Item _item;
         private Barbecue Barbecue;
 
-        public Command CloseModalCommand { get; set; }
-        public Command AddCommand { get; set; }
+        public Command CloseModalCommand { get; }
+        public Command AddCommand { get; }
         public bool Drink
         {
             get => _drink;

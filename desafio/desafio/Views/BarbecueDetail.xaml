@@ -19,10 +19,13 @@
             </StackLayout>
             <Label Text="Participantes" FontAttributes="Bold"/>
             <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
-            <CollectionView ItemsSource="{Binding Participants}" HeightRequest="300">
+            <CollectionView ItemsSource="{Binding Participants}" HeightRequest="300" x:Name="CVParticipants">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="5">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.TapCommand,Source={x:Reference CVParticipants}}" CommandParameter="{Binding .}"/>
+                            </Grid.GestureRecognizers>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>

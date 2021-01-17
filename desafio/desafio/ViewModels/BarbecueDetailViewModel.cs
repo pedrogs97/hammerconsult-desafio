@@ -20,12 +20,13 @@ namespace desafio.ViewModels
         private float _collected;
         private float _estimated;
         private Barbecue _barbecue;
-        private bool enablePayment;
+        private bool creator;
         private readonly Page Page;
        
         public Command PaidCommand { get; }
-        public Command ShareCommand { get; set; }
-        public Command OpenModalCommand { get; set; }
+        public Command TapCommand { get; }
+        public Command ShareCommand { get; }
+        public Command OpenModalCommand { get; }
         public ObservableCollection<ParticipantsModel> Participants
         {
             get => _participants;
@@ -60,6 +61,7 @@ namespace desafio.ViewModels
         {
             Page = page;
             Participants = new ObservableCollection<ParticipantsModel>();
+            TapCommand = new Command<ParticipantsModel>(Tap);
             PaidCommand = new Command<string>(Paid);
             ShareCommand = new Command(ShareLink);
             OpenModalCommand = new Command(OpenModal);
@@ -69,10 +71,19 @@ namespace desafio.ViewModels
         {
             await Page.Navigation.PushModalAsync(new FinancesPage(Barbecue.Id));
         }
-
+        private async void Tap(ParticipantsModel participant)
+        {
+            if (creator)
+                if (await Page.DisplayAlert("Ação", "Remover participante?", "Sim", "Não"))
+                {
+                    Participants.Remove(participant);
+                    Barbecue.Participants.Remove(ServicePerson.GetItem(participant.Id));
+                    UpdateValues();
+                }
+        }
         private async void Paid(string id)
         {
-            if (enablePayment)
+            if (creator)
             {
                 var person = ServicePerson.GetItem(id);
                 bool confirmed;
@@ -83,7 +94,7 @@ namespace desafio.ViewModels
                     {
                         Barbecue.TotalCollected -= 20.00f;
                         Barbecue.ParticipantsPaid.Remove(person);
-                        UpdateParticipants(person.Id, false);
+                        UpdateParticipantPayment(person.Id, false);
                     }
                 }
                 else
@@ -93,7 +104,7 @@ namespace desafio.ViewModels
                     {
                         Barbecue.TotalCollected += 20.00f;
                         Barbecue.ParticipantsPaid.Add(person);
-                        UpdateParticipants(person.Id, true);
+                        UpdateParticipantPayment(person.Id, true);
                     }
                 }
                 if (confirmed)
@@ -119,7 +130,7 @@ namespace desafio.ViewModels
             }
         }
 
-        private void UpdateParticipants(string id, bool paid)
+        private void UpdateParticipantPayment(string id, bool paid)
         {
             var p = new ParticipantsModel();
             foreach (var participant in Participants)
@@ -134,15 +145,10 @@ namespace desafio.ViewModels
             else
                 Participants.Insert(Participants.Count, p);
         }
-
-        public void OnAppearing(string id)
+        private void UpdateValues()
         {
-            Barbecue = ServiceBarbecue.GetItem(id);
-            if (ServicePerson.GetItem(App.Current.Properties["user"].ToString()).Id == Barbecue.Creator.Id)
-                enablePayment = true;
-            else
-                enablePayment = false;
             var estimated = 0.00f;
+            var collected = 0.00f;
             Barbecue.Participants.ForEach((person) =>
             {
                 var participant = new ParticipantsModel
@@ -153,7 +159,10 @@ namespace desafio.ViewModels
                 if (!Barbecue.ParticipantsPaid.Contains(person))
                     participant.Paid = false;
                 else
+                {
                     participant.Paid = true;
+                    collected += 20;
+                }
                 if (Barbecue.Participants.Count != Participants.Count)
                 {
                     if (participant.Paid)
@@ -165,7 +174,18 @@ namespace desafio.ViewModels
             });
             Estimated = estimated;
             Total = Barbecue.TotalCollected - Barbecue.TotalSpent;
-            Collected = Barbecue.TotalCollected;
+            Collected = Barbecue.TotalCollected = collected;
+        }
+        public void OnAppearing(string id)
+        {
+            Barbecue = ServiceBarbecue.GetItem(id);
+
+            if (ServicePerson.GetItem(App.Current.Properties["user"].ToString()).Id == Barbecue.Creator.Id)
+                creator = true;
+            else
+                creator = false;
+
+            UpdateValues();
         }        
     }
 }

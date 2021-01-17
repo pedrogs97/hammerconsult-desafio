@@ -14,7 +14,7 @@
                 <Entry Placeholder="Informe onde será realizado." Text="{Binding Local, Mode=OneWayToSource}"/>
                 <Label Text="Data" FontAttributes="Bold" FontSize="Medium"/>
                 <DatePicker x:Name="datePicker" Format="dd/MM/yyyy" Date="{Binding BarbecueDate, Mode=OneWayToSource}"/>
-                <Button Text="Adicionar" HorizontalOptions="EndAndExpand" Command="{Binding AddBarbecue}"/>
+                <Button Text="Adicionar" HorizontalOptions="EndAndExpand" Command="{Binding AddBarbecueCommand}"/>
             </StackLayout>
         </RefreshView>
         
