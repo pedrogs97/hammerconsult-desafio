@@ -10,10 +10,7 @@ namespace desafio.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if ((float)value < 0)
-                return Color.Red;
-            else
-                return Color.Default;
+            return (float)value < 0? Color.Red : Color.Default;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
