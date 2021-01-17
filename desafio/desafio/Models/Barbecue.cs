@@ -17,5 +17,7 @@ namespace desafio.Models
         public float TotalSpent { get; set; }
         public  float TotalDrink { get; set; }
         public float TotalFood { get; set; }
+        public float TotalOthers { get; set; }
+        public List<Item> Items { get; set; }
     }
 }

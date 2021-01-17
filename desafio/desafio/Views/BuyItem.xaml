@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="desafio.Views.BuyItem">
+             x:Class="desafio.Views.BuyItem"
+             BackgroundColor="Transparent">
     <ContentPage.Resources>
         <ControlTemplate x:Key="RadioButtonTemplate">
             <Frame BorderColor="#F3F2F1"
                    BackgroundColor="#F3F2F1"
                    HasShadow="False"
-                   HeightRequest="100"
-                   WidthRequest="100"
+                   HeightRequest="80"
+                   WidthRequest="80"
                    HorizontalOptions="Start"
                    VerticalOptions="Start"
                    Padding="0">
@@ -39,21 +40,21 @@
                     </VisualStateGroupList>
                 </VisualStateManager.VisualStateGroups>
                 <Grid Margin="4"
-                      WidthRequest="100">
-                    <Grid WidthRequest="18"
-                          HeightRequest="18"
+                      WidthRequest="80">
+                    <Grid WidthRequest="14"
+                          HeightRequest="14"
                           HorizontalOptions="End"
                           VerticalOptions="Start">
                         <Ellipse Stroke="Black"
                                  Fill="White"
-                                 WidthRequest="16"
-                                 HeightRequest="16"
+                                 WidthRequest="14"
+                                 HeightRequest="14"
                                  HorizontalOptions="Center"
                                  VerticalOptions="Center" />
                         <Ellipse x:Name="check"
                                  Fill="#8db600"
-                                 WidthRequest="8"
-                                 HeightRequest="8"
+                                 WidthRequest="7"
+                                 HeightRequest="7"
                                  HorizontalOptions="Center"
                                  VerticalOptions="Center" />
                     </Grid>
@@ -68,37 +69,46 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Margin="5">
-            <Label Text="Compras" FontAttributes="Bold" />
-            <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
-                <RadioButton>
-                    <RadioButton.Content>
-                        <StackLayout>
-                            <Image Source="drink.png" HorizontalOptions="Center" VerticalOptions="EndAndExpand" />
-                            <Label Text="Bebida" HorizontalOptions="Center" VerticalOptions="End" />
-                        </StackLayout>
-                    </RadioButton.Content>
-                </RadioButton>
-                <RadioButton>
-                    <RadioButton.Content>
-                        <StackLayout>
-                            <Image Source="food.png" HorizontalOptions="Center" VerticalOptions="EndAndExpand" />
-                            <Label Text="Comida" HorizontalOptions="Center" VerticalOptions="End" />
-                        </StackLayout>
-                    </RadioButton.Content>
-                </RadioButton>
-                <RadioButton>
-                    <RadioButton.Content>
-                        <StackLayout VerticalOptions="Center">
-                            <Label Text="Outros" HorizontalOptions="Center" VerticalOptions="Center" />
-                        </StackLayout>
-                    </RadioButton.Content>
-                </RadioButton>
-            </StackLayout>
-            <Entry Placeholder="Nome. ex.: cerveja, picanha" HorizontalOptions="Start" WidthRequest="250" ClearButtonVisibility="WhileEditing" Keyboard="Text"/>
-            <Entry Placeholder="Valor" ClearButtonVisibility="WhileEditing" WidthRequest="100" HorizontalOptions="Start" Keyboard="Numeric"/>
-            <Button Text="Adicionar" HorizontalOptions="End"/>
-        </StackLayout>
+        <Grid>
+            <BoxView Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" Opacity="0.8">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseModalCommand}"/>
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            <Frame Margin="25, 50" CornerRadius="10" BackgroundColor="LightGray" HeightRequest="350" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0">
+                <StackLayout>
+                    <Label Text="Compras" FontAttributes="Bold" />
+                    <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Spacing="15">
+                        <RadioButton IsChecked="{Binding Drink}">
+                            <RadioButton.Content>
+                                <StackLayout>
+                                    <Image Source="ic_drink.png" HorizontalOptions="Center" VerticalOptions="EndAndExpand" />
+                                    <Label Text="Bebida" HorizontalOptions="Center" VerticalOptions="End" />
+                                </StackLayout>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton IsChecked="{Binding Food}">
+                            <RadioButton.Content>
+                                <StackLayout>
+                                    <Image Source="ic_food.png" HorizontalOptions="Center" VerticalOptions="EndAndExpand" />
+                                    <Label Text="Comida" HorizontalOptions="Center" VerticalOptions="End" />
+                                </StackLayout>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton IsChecked="{Binding Others}">
+                            <RadioButton.Content>
+                                <StackLayout VerticalOptions="Center">
+                                    <Label Text="Outros" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </StackLayout>
+                            </RadioButton.Content>
+                        </RadioButton>
+                    </StackLayout>
+                    <Entry Text="{Binding Item.Name}" Placeholder="Nome. ex.: cerveja, picanha" HorizontalOptions="Start" WidthRequest="250" ClearButtonVisibility="WhileEditing" Keyboard="Text"/>
+                    <Entry Text="{Binding Item.Value}" Placeholder="Valor" ClearButtonVisibility="WhileEditing" WidthRequest="100" HorizontalOptions="Start" Keyboard="Numeric"/>
+                    <Button Text="Adicionar" HorizontalOptions="End" Command="{Binding AddCommand}"/>
+                </StackLayout>
+            </Frame>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

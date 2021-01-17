@@ -28,9 +28,9 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
-            <Converter:PersonToString x:Key="creator"/>
             <Converter:DateToString x:Key="date"/>
             <Converter:BoolToImgSource x:Key="paid"/>
+            <Converter:FloatToColor x:Key="textColor"/>
         </ResourceDictionary>        
     </Application.Resources>
 </Application>

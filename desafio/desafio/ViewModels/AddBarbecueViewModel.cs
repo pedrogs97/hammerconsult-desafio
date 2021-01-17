@@ -54,7 +54,9 @@ namespace desafio.ViewModels
                         TotalDrink = 0.00f,
                         TotalFood = 0.00f,
                         TotalSpent = 0.00f,
-                        Creator = ServicePerson.GetItem(App.Current.Properties["user"].ToString())
+                        TotalOthers = 0.00f,
+                        Creator = ServicePerson.GetItem(App.Current.Properties["user"].ToString()),
+                        Items = new List<Item>()
                     };
                     if (ServiceBarbecue.AddItem(Barbecue))
                     {
