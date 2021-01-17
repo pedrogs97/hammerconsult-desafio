@@ -1,5 +1,6 @@
 ﻿using desafio.Models;
 using desafio.Views;
+using System;
 using System.Collections.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -126,7 +127,14 @@ namespace desafio.ViewModels
             });
             if (await Page.DisplayAlert("", "Mudar visão para convidado?", "Sim", "Não"))
             {
-                // fazer alteração de user para virar convidado
+                var userInvated = new Person
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = "Novo Convidado"
+                };
+                ServicePerson.AddItem(userInvated);
+                App.Current.Properties["user"] = userInvated.Id;
+                App.Current.MainPage = new NavigationPage(new InitialPage());
             }
         }
 

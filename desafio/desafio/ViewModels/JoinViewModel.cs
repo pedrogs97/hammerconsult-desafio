@@ -7,17 +7,32 @@ namespace desafio.ViewModels
 {
     public class JoinViewModel : BaseViewModel
     {
-        private Page Page;
+        private string _codeBarbecue;
+        private Page Page { get; }
         public Command CloseModalCommand { get; }
-
+        public Command JoinCommand { get; }
+        public string CodeBarbecue
+        {
+            get => _codeBarbecue;
+            set => SetProperty(ref _codeBarbecue, value);
+        }
         public JoinViewModel(Page page)
         {
             Page = page;
             CloseModalCommand = new Command(CloseModal);
+            JoinCommand = new Command(Join);
         }
 
         private async void CloseModal()
         {
+            await Page.Navigation.PopModalAsync();
+        }
+        private async void Join()
+        {
+            var user = ServicePerson.GetItem(App.Current.Properties["user"].ToString());
+            var barbecue = ServiceBarbecue.GetItem(CodeBarbecue);
+            barbecue.Participants.Add(user);
+            ServiceBarbecue.UpdateItem(barbecue);
             await Page.Navigation.PopModalAsync();
         }
     }

@@ -13,8 +13,8 @@
             <Frame Margin="25, 50" CornerRadius="10" BackgroundColor="LightGray" HeightRequest="250" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0" >
                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                     <Label Text="Insira o código do churasco" FontSize="Medium"/>
-                    <Entry Placeholder="Código do churrasco"/>
-                    <Button Text="Participar"/>
+                    <Entry Placeholder="Código do churrasco" Text="{Binding CodeBarbecue}"/>
+                    <Button Text="Participar" Command="{Binding JoinCommand}"/>
                 </StackLayout>
             </Frame>
         </Grid>
