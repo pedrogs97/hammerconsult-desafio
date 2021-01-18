@@ -14,11 +14,11 @@ namespace desafio.Services
         {
             people = new List<Person>()
             {
-                new Person { Id = Guid.NewGuid().ToString(), Name = "João" },
-                new Person { Id = Guid.NewGuid().ToString(), Name = "Marina" },
-                new Person { Id = Guid.NewGuid().ToString(), Name = "Stephanie" },
-                new Person { Id = Guid.NewGuid().ToString(), Name = "Paulo" },
-                new Person { Id = Guid.NewGuid().ToString(), Name = "Ariel" }
+                new Person { Id = Guid.NewGuid().ToString(), Name = "João", Drink = true, InvitedBy = null },
+                new Person { Id = Guid.NewGuid().ToString(), Name = "Marina", Drink = true, InvitedBy = null },
+                new Person { Id = Guid.NewGuid().ToString(), Name = "Stephanie", Drink = true, InvitedBy = null },
+                new Person { Id = Guid.NewGuid().ToString(), Name = "Paulo", Drink = true, InvitedBy = null },
+                new Person { Id = Guid.NewGuid().ToString(), Name = "Ariel", Drink = true, InvitedBy = null }
             };
         }
         public bool AddItem(Person person)

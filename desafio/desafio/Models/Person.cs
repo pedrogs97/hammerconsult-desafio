@@ -8,5 +8,7 @@ namespace desafio.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public bool Drink { get; set; }
+        public Person InvitedBy { get; set; }
     }
 }

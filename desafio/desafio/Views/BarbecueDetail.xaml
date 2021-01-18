@@ -17,7 +17,10 @@
                 <Label Text="{Binding Barbecue.Creator.Name}" FontSize="Micro" HorizontalOptions="Start"/>
                 <Label Text="{Binding Barbecue.Date, Converter={StaticResource date}}" FontSize="Small" HorizontalOptions="EndAndExpand"/>
             </StackLayout>
-            <Label Text="Participantes" FontAttributes="Bold"/>
+            <StackLayout Orientation="Horizontal">
+                <Button BackgroundColor="Transparent" TextColor="Gray" BorderColor="Transparent" Text="Participantes" FontAttributes="Bold" Command="{Binding SetParticipantsCommand}"/>
+                <Button BackgroundColor="Transparent" TextColor="Gray" BorderColor="Transparent" Text="Convidados" FontAttributes="Bold" Command="{Binding SetInvitedsCommand}"/>
+            </StackLayout>
             <Line BackgroundColor="DarkGray"  HeightRequest="1"/>
             <CollectionView ItemsSource="{Binding Participants}" HeightRequest="300" x:Name="CVParticipants">
                 <CollectionView.ItemTemplate>

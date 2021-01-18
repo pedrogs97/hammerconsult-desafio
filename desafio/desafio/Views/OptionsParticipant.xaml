@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="desafio.Views.OptionsParticipant"
+             BackgroundColor="Transparent">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <BoxView Grid.Row="0" Grid.Column="0" BackgroundColor="Gray" Opacity="0.8">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseModalCommand}"/>
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            <Frame Margin="25, 50" CornerRadius="10" BackgroundColor="LightGray" HeightRequest="250" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0" >
+                <StackLayout>
+                    <Grid>
+                        <StackLayout Orientation="Horizontal" Grid.Row="0">
+                            <Label Text="Não irá beber"/>
+                            <Switch IsToggled="{Binding NotDrink}"/>
+                        </StackLayout>
+                        <ImageButton Source="ic_person_remove.png" Grid.Row="0" HorizontalOptions="End" VerticalOptions="Start" BackgroundColor="Transparent" IsVisible="{Binding IsVisible}"                                     Command="{Binding RemovePersonCommand}"/>
+                        <StackLayout Orientation="Horizontal" Grid.Row="1">
+                            <Label Text="Convidado"/>
+                            <Switch IsToggled="{Binding Invited}"/>
+                        </StackLayout>
+                    </Grid>
+                    <Line BackgroundColor="DarkGray" HeightRequest="1"/>
+                    <Label Text="Nome"/>
+                    <Entry Placeholder="Nome do convidado" Text="{Binding InvitedName}" HorizontalOptions="Start" FontSize="Small" IsEnabled="{Binding IsEnable}"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Não irá beber"/>
+                        <Switch IsToggled="{Binding NotDrinkInvited}" IsEnabled="{Binding IsEnable}"/>
+                    </StackLayout>
+                    <Button Text="{Binding TxtButton}" HorizontalOptions="Center" IsEnabled="{Binding IsEnable}" Command="{Binding AddInvitedCommand}"/>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

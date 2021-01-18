@@ -17,3 +17,4 @@ D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\Views\Barbecu
 D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\Views\FinancesPage.xaml.g.cs
 D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\Views\JoinBarbecuePage.xaml.g.cs
 D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\Views\BuyItem.xaml.g.cs
+D:\Desafio Hammer\desafio\desafio\desafio\obj\Debug\netstandard2.0\Views\OptionsParticipant.xaml.g.cs

@@ -12,8 +12,13 @@ namespace desafio.ViewModels
 {
     public class InitialViewModel : BaseViewModel
     {
+        private INavigation Navigation { get; }
         private bool _isVisible;
         private ObservableCollection<Barbecue> _barbecues;
+
+        public Command ToAddCommand { get; }
+        public Command ToDetailCommand { get; }
+        public Command ToJoinCommand { get; }
         public ObservableCollection<Barbecue> Barbecues
         {
             get => _barbecues;
@@ -24,10 +29,6 @@ namespace desafio.ViewModels
             get => _isVisible;
             set => SetProperty(ref _isVisible, value);
         }
-        private INavigation Navigation { get; }
-        public Command ToAddCommand { get; }
-        public Command ToDetailCommand { get; }
-        public Command ToJoinCommand { get; }
         public InitialViewModel(INavigation navigation)
         {
             Title = "Home";
@@ -54,7 +55,7 @@ namespace desafio.ViewModels
             Barbecues = LoadBarbecue();
             if (!App.Current.Properties.ContainsKey("user"))
             {
-                var currentUser = new Person { Id = Guid.NewGuid().ToString(), Name = "Pedro Gustavo" };
+                var currentUser = new Person { Id = Guid.NewGuid().ToString(), Name = "Pedro Gustavo", Drink = true, InvitedBy = null };
                 if (ServicePerson.AddItem(currentUser))
                 {
                     App.Current.Properties.Add("user", currentUser.Id);
