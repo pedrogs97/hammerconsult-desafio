@@ -16,7 +16,7 @@ namespace desafio.Views
         public AddBarbecuePage()
         {
             InitializeComponent();
-            datePicker.SetValue(DatePicker.MaximumDateProperty, DateTime.Now);
+            datePicker.SetValue(DatePicker.MinimumDateProperty, DateTime.Now);
             BindingContext = new AddBarbecueViewModel(this);
         }
     }
